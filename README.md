@@ -19,21 +19,23 @@ Configura las variables requeridas en un archivo `.env` local o en el entorno de
 
 Para habilitar el dictado por voz, configura también `AZURE_SPEECH_KEY` y, si corresponde, `AZURE_SPEECH_REGION`. `DEMO_LOGIN_PIN` es un PIN compartido únicamente para demostración; no es autenticación apta para producción.
 
-## Preparación para Azure App Service
+## Azure Container Apps
 
-La aplicación admite `RIO_CLARO_DB_PATH` para ubicar la base SQLite en almacenamiento persistente. Localmente, si no se define, usa `rioclaro_master.db` junto a `app.py`. En Azure Linux, configura esta variable con una ruta persistente bajo `/home`, por ejemplo `/home/data/rioclaro_master.db`. En el primer inicio copia allí `rioclaro_master.db` del paquete de demostración; en los inicios posteriores conserva la base persistente y no la sobrescribe. **Solo empaqueta la copia sintética aprobada para la demo, nunca una base operativa.**
+El `Dockerfile` crea una imagen Linux de Python 3.12 y contiene solo el código, el CSV de empleados y la base SQLite aprobada como datos sintéticos. `.dockerignore` excluye `.env`, archivos locales, datos auxiliares y el resto del árbol de trabajo. El flujo de GitHub Actions publica la imagen en el GitHub Container Registry privado del repositorio al actualizar `main`.
 
-Configura las variables de Azure OpenAI y Speech en **App Service > Configuration**, nunca en el código, el repositorio ni los registros de despliegue. El inicio de Streamlit para App Service Linux es:
+Para desplegar:
 
-```sh
-python -m streamlit run app.py --server.address 0.0.0.0 --server.port 8000
-```
+1. Ejecuta el flujo **Publish Río Claro demo container** en GitHub Actions y espera que finalice correctamente.
+2. En Container Apps, configura el registro privado `ghcr.io` con el usuario de GitHub y un token personal de solo lectura de paquetes (`read:packages`). No guardes ese token en el repositorio ni lo compartas por chat.
+3. Usa la imagen `ghcr.io/abeltran0954/rio-claro-ai901-demo:latest`, el puerto de destino `8000` y habilita ingress externo HTTPS.
+4. Agrega en la configuración de la app `DEMO_LOGIN_PIN=1234` y configura como secretos `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY` y `AZURE_OPENAI_DEPLOYMENT_NAME`. `AZURE_SPEECH_KEY` y `AZURE_SPEECH_REGION` son opcionales para dictado. No copies valores desde `.env` al código ni a GitHub.
+5. Mantén una sola réplica mientras se use SQLite. Sin un volumen persistente, los cambios a la base son temporales y pueden perderse cuando Azure sustituya la réplica; la base sintética incluida en la imagen sirve como estado inicial.
 
-Antes de habilitar tráfico público, valida el puerto de escucha, WebSockets, persistencia de SQLite, acceso móvil, credenciales de servicios, y las consultas que la aplicación permite a cada perfil.
+El acceso demo con PIN compartido no es autenticación para producción. Antes de usar datos reales, se requiere diseñar autenticación individual, controles de acceso, almacenamiento persistente y protección de datos.
 
 ## Plan de trabajo
 
-1. **Fase 1 — preparación local y protección del repositorio:** asegurar el arranque, separar secretos y archivos operativos, preparar la configuración para almacenamiento persistente y validar la aplicación sin publicar datos.
-2. **Fase 2 — publicación y evaluación:** revisar contigo los activos sintéticos que se publicarán, crear el repositorio privado de GitHub, desplegar en Azure usando únicamente el crédito autorizado, verificar la URL desde una sesión externa y completar el Markdown de entrega con capturas y evidencia de los criterios de éxito.
+1. **Fase 1 — preparación local y protección del repositorio:** asegurar el arranque, separar secretos y archivos operativos, preparar la configuración para almacenamiento persistente y validar la aplicación.
+2. **Fase 2 — publicación y evaluación:** publicar únicamente los activos sintéticos aprobados, desplegar en Azure usando el crédito autorizado, verificar la URL desde una sesión externa y completar la evidencia de los criterios de éxito.
 
 No se deben subir `.env`, secretos, bases de datos, CSV ni audio sin una revisión explícita y una lista permitida de activos sintéticos de demostración.

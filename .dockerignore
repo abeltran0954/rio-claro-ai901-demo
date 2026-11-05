@@ -1,0 +1,8 @@
+**
+!Dockerfile
+!.dockerignore
+!pyproject.toml
+!uv.lock
+!app.py
+!empleados_distribuidora_v2.csv
+!rioclaro_master.db
