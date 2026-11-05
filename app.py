@@ -1019,7 +1019,8 @@ if rol_rbac == "Finanzas y Auditoría" and usuario.get("Puesto") != "Auxiliar de
                         st.error("BLOQUEO: Esta factura ya está registrada en Cuentas por Pagar.")
 
 # --- MÓDULO: ASISTENTE Y CHAT ---
-st.title("💧 Asistente Comercial Integrado de Distribuidora Río Claro")
+st.title("Distribuidora Río Claro", icon=":material/water_drop:")
+st.caption("Asistente comercial integrado para la operación de las sucursales.")
 if rol_rbac == "Administrador Global":
     chat_column, dashboard_column = st.columns([1.2, 1], gap="large")
     chat_placeholder = chat_column.empty()
@@ -1033,9 +1034,9 @@ if "messages" not in st.session_state or not st.session_state.messages:
     st.session_state.messages = [{"role": "assistant", "content": aviso_transparencia}]
 
 with chat_placeholder.container(border=True):
-    st.subheader("Chatbot de Río Claro")
+    st.subheader("Asistente IA", icon=":material/chat:")
     chat_history = st.container(height=285)
-    st.caption("🎤 Dicta tu consulta o el reporte; puedes agregar datos adicionales como folios, correos, etc. en el campo de texto.")
+    st.caption("Escribe tu consulta o usa el micrófono para dictarla. Puedes agregar folios y otros datos.")
 
     composer_key = "rio_claro_chat_composer"
     composer_state = st.session_state.get(composer_key, {})

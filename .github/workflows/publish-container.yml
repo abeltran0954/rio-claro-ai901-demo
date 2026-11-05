@@ -8,6 +8,7 @@ on:
       - .dockerignore
       - Dockerfile
       - app.py
+      - .streamlit/config.toml
       - empleados_distribuidora_v2.csv
       - pyproject.toml
       - rioclaro_master.db

@@ -14,6 +14,7 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev --no-install-project
 
+COPY .streamlit/config.toml ./.streamlit/config.toml
 COPY app.py empleados_distribuidora_v2.csv rioclaro_master.db ./
 
 RUN useradd --create-home --uid 10001 appuser \
