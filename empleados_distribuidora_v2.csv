@@ -1,0 +1,141 @@
+ID_Empleado,Nombre,Apellidos,Sucursal,Departamento,Puesto,Rol_RBAC_IA
+EMP-001,Don Ernesto,Beltrán López,Corporativo,Dirección,Director General,Administrador Global
+EMP-002,Laura,Vázquez Beltrán,Corporativo,Administración,Cuentas por Pagar,Finanzas y Auditoría
+EMP-003,Carlos,Cruz Sánchez,Corporativo,Soporte,Encargado de Soporte,Administrador Global
+EMP-004,Javier,Muñoz Díaz,Corporativo,Administración,Auxiliar de RH,Finanzas y Auditoría
+EMP-005,María,López Domínguez,Corporativo,Administración,Recepcionista,Recepcionista
+EMP-006,Silvia,Muñoz Ramos,Corporativo,Mantenimiento,Afanadora,Sin Acceso IA
+EMP-007,Sergio,Lizárraga López,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-008,Leticia,Navarro Ramos,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-009,Gabriela,Muñoz Gutiérrez,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-010,José,Flores Morales,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-011,Raquel,Martínez Sánchez,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-012,Alicia,Rojas Ramírez,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-013,Fernando,Álvarez Hernández,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-014,Gabriela,Cruz Álvarez,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-015,Daniel,Torres Pérez,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-016,Teresa,Morales Ramírez,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-017,Víctor,Castillo Salinas,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-018,Manuel,Méndez Álvarez,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-019,Norma,Ruiz González,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-020,Gloria,Domínguez Romero,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-021,Francisco,Soto Salinas,Mazatlán,Ventas,Agente de Ventas,Ventas
+EMP-022,Mónica,Beltrán Mendoza,Mazatlán,Operaciones,Gerente de Sucursal,Gerencia Local
+EMP-023,Toño,Ruiz Méndez,Mazatlán,Logística y Almacén,Jefe de Bodega,Operativo Bodega y Logística
+EMP-024,Mónica,Garza Castillo,Mazatlán,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-025,Lorena,González Ramírez,Mazatlán,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-026,Juan,Cárdenas Reyes,Mazatlán,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-027,Claudia,García Hernández,Mazatlán,Logística y Almacén,Supervisor de Logística,Gerencia Local
+EMP-028,Gabriela,Salinas Pérez,Mazatlán,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-029,Juan,Ruiz Castillo,Mazatlán,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-030,Ricardo,Ramos Hernández,Mazatlán,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-031,Raquel,Ruiz Morales,Mazatlán,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-032,Javier,Muñoz Moreno,Mazatlán,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-033,Luis,Cruz Salinas,Mazatlán,Operaciones,Cajero,Consultas Mostrador
+EMP-034,ADMIN,Sistema,Mazatlán,Operaciones,Cajero,Consultas Mostrador
+EMP-035,Rubén,Méndez Díaz,Mazatlán,Operaciones,Cajero,Consultas Mostrador
+EMP-036,Raquel,Cruz Martínez,Mazatlán,Seguridad,Guardia de Seguridad,Sin Acceso IA
+EMP-037,Armando,Castillo Muñoz,Mazatlán,Seguridad,Guardia de Seguridad,Sin Acceso IA
+EMP-038,José,Pérez Álvarez,Mazatlán,Seguridad,Guardia de Seguridad,Sin Acceso IA
+EMP-039,Claudia,Vargas Vázquez,Mazatlán,Mantenimiento,Personal de Mantenimiento,Sin Acceso IA
+EMP-040,Hugo,Ramos Lizárraga,Mazatlán,Mantenimiento,Personal de Mantenimiento,Sin Acceso IA
+EMP-041,Arturo,Gómez Cárdenas,Mazatlán,Mantenimiento,Afanadora,Sin Acceso IA
+EMP-042,Norma,Martínez Méndez,Mazatlán,Mantenimiento,Afanadora,Sin Acceso IA
+EMP-043,Juan,Flores González,Mazatlán,Mantenimiento,Afanadora,Sin Acceso IA
+EMP-044,Rosa,Cárdenas Moreno,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-045,Alejandro,Ortiz Cruz,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-046,Salvador,Torres Lizárraga,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-047,Raúl,Méndez Ramírez,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-048,Miguel,Vázquez Ramos,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-049,Arturo,Vázquez Moreno,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-050,Manuel,Hernández Fernández,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-051,Marcela,Muñoz Flores,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-052,Mario,Rojas Vargas,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-053,Irma,Chávez González,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-054,Paola,Vargas Martínez,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-055,Verónica,Vargas Reyes,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-056,Manuel,Hernández Rodríguez,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-057,Carmen,Martínez Mendoza,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-058,Rosalía,Reyes Valdez,Culiacán,Ventas,Agente de Ventas,Ventas
+EMP-059,Mariana,Álvarez Aguilar,Culiacán,Operaciones,Gerente de Sucursal,Gerencia Local
+EMP-060,Salvador,Osuna Moreno,Culiacán,Logística y Almacén,Jefe de Bodega,Operativo Bodega y Logística
+EMP-061,Alicia,Ortiz Castillo,Culiacán,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-062,Mónica,Reyes González,Culiacán,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-063,Carlos,Fernández Osuna,Culiacán,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-064,Francisco,Gutiérrez Ortiz,Culiacán,Logística y Almacén,Supervisor de Logística,Gerencia Local
+EMP-065,Roberto,Cruz Morales,Culiacán,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-066,Margarita,Moreno Rojas,Culiacán,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-067,Eduardo,Pérez Cruz,Culiacán,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-068,Roberto,Morales Ramos,Culiacán,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-069,Elena,López Gutiérrez,Culiacán,Operaciones,Cajero,Consultas Mostrador
+EMP-070,Fernando,Garza Soto,Culiacán,Operaciones,Cajero,Consultas Mostrador
+EMP-071,Juan,Gómez Pérez,Culiacán,Operaciones,Cajero,Consultas Mostrador
+EMP-072,Lorena,Navarro Soto,Culiacán,Seguridad,Guardia de Seguridad,Sin Acceso IA
+EMP-073,Mario,Méndez Gutiérrez,Culiacán,Seguridad,Guardia de Seguridad,Sin Acceso IA
+EMP-074,Daniel,Moreno Garza,Culiacán,Mantenimiento,Personal de Mantenimiento,Sin Acceso IA
+EMP-075,Javier,Lizárraga Ramos,Culiacán,Mantenimiento,Afanadora,Sin Acceso IA
+EMP-076,Antonio,Cruz Chávez,Culiacán,Mantenimiento,Afanadora,Sin Acceso IA
+EMP-077,Lorena,Salinas Garza,Los Mochis,Ventas,Agente de Ventas,Ventas
+EMP-078,Lorena,Torres Reyes,Los Mochis,Ventas,Agente de Ventas,Ventas
+EMP-079,Elena,Cárdenas Fernández,Los Mochis,Ventas,Agente de Ventas,Ventas
+EMP-080,Francisco,Vargas Gómez,Los Mochis,Ventas,Agente de Ventas,Ventas
+EMP-081,Mónica,Muñoz Martínez,Los Mochis,Ventas,Agente de Ventas,Ventas
+EMP-082,Manuel,Salinas Gómez,Los Mochis,Ventas,Agente de Ventas,Ventas
+EMP-083,Eduardo,Navarro Reyes,Los Mochis,Ventas,Agente de Ventas,Ventas
+EMP-084,Oscar,Torres Vázquez,Los Mochis,Ventas,Agente de Ventas,Ventas
+EMP-085,Rosalía,Salinas Sánchez,Los Mochis,Ventas,Agente de Ventas,Ventas
+EMP-086,Manuel,Mendoza Castillo,Los Mochis,Ventas,Agente de Ventas,Ventas
+EMP-087,Hugo,Ramos Vargas,Los Mochis,Operaciones,Gerente de Sucursal,Gerencia Local
+EMP-088,Oscar,Soto Ramírez,Los Mochis,Logística y Almacén,Jefe de Bodega,Operativo Bodega y Logística
+EMP-089,Norma,Osuna Martínez,Los Mochis,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-090,Armando,Flores Vázquez,Los Mochis,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-091,Eduardo,Ruiz Torres,Los Mochis,Logística y Almacén,Supervisor de Logística,Gerencia Local
+EMP-092,Norma,Morales Rojas,Los Mochis,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-093,Hugo,Moreno Mendoza,Los Mochis,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-094,Susana,Gómez Álvarez,Los Mochis,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-095,Fernando,Cárdenas Méndez,Los Mochis,Operaciones,Cajero,Consultas Mostrador
+EMP-096,Gabriela,Díaz Chávez,Los Mochis,Operaciones,Cajero,Consultas Mostrador
+EMP-097,Paola,Mendoza Lizárraga,Los Mochis,Seguridad,Guardia de Seguridad,Sin Acceso IA
+EMP-098,Salvador,Moreno Vargas,Los Mochis,Seguridad,Guardia de Seguridad,Sin Acceso IA
+EMP-099,Jesús,García Díaz,Los Mochis,Mantenimiento,Personal de Mantenimiento,Sin Acceso IA
+EMP-100,María,Moreno Vargas,Los Mochis,Mantenimiento,Afanadora,Sin Acceso IA
+EMP-101,Diana,Beltrán García,Guasave,Ventas,Agente de Ventas,Ventas
+EMP-102,Francisco,Torres Gómez,Guasave,Ventas,Agente de Ventas,Ventas
+EMP-103,Norma,Moreno Navarro,Guasave,Ventas,Agente de Ventas,Ventas
+EMP-104,Teresa,Ruiz Muñoz,Guasave,Ventas,Agente de Ventas,Ventas
+EMP-105,Verónica,Navarro Torres,Guasave,Ventas,Agente de Ventas,Ventas
+EMP-106,Alejandro,Cárdenas Flores,Guasave,Ventas,Agente de Ventas,Ventas
+EMP-107,Víctor,García Castillo,Guasave,Ventas,Agente de Ventas,Ventas
+EMP-108,Teresa,Osuna Vargas,Guasave,Ventas,Agente de Ventas,Ventas
+EMP-109,Alejandro,Díaz Navarro,Guasave,Ventas,Agente de Ventas,Ventas
+EMP-110,Jorge,Osuna Ortiz,Guasave,Ventas,Agente de Ventas,Ventas
+EMP-111,Antonio,Chávez Castillo,Guasave,Operaciones,Gerente de Sucursal,Gerencia Local
+EMP-112,Marcela,Morales Osuna,Guasave,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-113,Raquel,Vázquez Navarro,Guasave,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-114,Manuel,Torres Ramos,Guasave,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-115,Luis,Salinas Vázquez,Guasave,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-116,Marcela,Sánchez Reyes,Guasave,Operaciones,Cajero,Consultas Mostrador
+EMP-117,José,Moreno Ruiz,Guasave,Seguridad,Guardia de Seguridad,Sin Acceso IA
+EMP-118,Marcela,Mendoza Cruz,Guasave,Seguridad,Guardia de Seguridad,Sin Acceso IA
+EMP-119,Norma,Torres Vázquez,Guasave,Mantenimiento,Personal de Mantenimiento,Sin Acceso IA
+EMP-120,Verónica,Domínguez Ramos,Guasave,Mantenimiento,Afanadora,Sin Acceso IA
+EMP-121,Mónica,Cruz Garza,Navolato,Ventas,Agente de Ventas,Ventas
+EMP-122,Manuel,Cárdenas García,Navolato,Ventas,Agente de Ventas,Ventas
+EMP-123,Mónica,Rodríguez Moreno,Navolato,Ventas,Agente de Ventas,Ventas
+EMP-124,Antonio,Romero Reyes,Navolato,Ventas,Agente de Ventas,Ventas
+EMP-125,Hugo,Vázquez Beltrán,Navolato,Ventas,Agente de Ventas,Ventas
+EMP-126,Juan,Morales Domínguez,Navolato,Ventas,Agente de Ventas,Ventas
+EMP-127,Roberto,Ramírez Ortiz,Navolato,Ventas,Agente de Ventas,Ventas
+EMP-128,Roberto,Hernández González,Navolato,Ventas,Agente de Ventas,Ventas
+EMP-129,Héctor,Ramos Flores,Navolato,Ventas,Agente de Ventas,Ventas
+EMP-130,Patricia,Ramírez Chávez,Navolato,Ventas,Agente de Ventas,Ventas
+EMP-131,Manuel,Valdez López,Navolato,Operaciones,Gerente de Sucursal,Gerencia Local
+EMP-132,Susana,Méndez Salinas,Navolato,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-133,José,López Hernández,Navolato,Logística y Almacén,Auxiliar de Bodega,Operativo Bodega y Logística
+EMP-134,Eduardo,Reyes Morales,Navolato,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-135,Lorena,Aguilar Ramírez,Navolato,Logística y Almacén,Repartidor,Operativo Bodega y Logística
+EMP-136,Raquel,Martínez Torres,Navolato,Operaciones,Cajero,Consultas Mostrador
+EMP-137,Oscar,Ramos Vázquez,Navolato,Seguridad,Guardia de Seguridad,Sin Acceso IA
+EMP-138,Jesús,Aguilar Osuna,Navolato,Seguridad,Guardia de Seguridad,Sin Acceso IA
+EMP-139,Mario,Domínguez Álvarez,Navolato,Mantenimiento,Personal de Mantenimiento,Sin Acceso IA
+EMP-140,Roberto,Rojas Chávez,Navolato,Mantenimiento,Afanadora,Sin Acceso IA

@@ -1,0 +1,26 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local secrets and Streamlit credentials
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Operational data and generated files; review and explicitly allow-list
+# sanitized demo assets before publishing to GitHub.
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.csv
+*.wav
+reporte_unificacion_productos.md

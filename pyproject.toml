@@ -1,0 +1,21 @@
+[project]
+name = "rio-claro"
+version = "0.1.0"
+description = "Proyecto del curso Microsoft - RioClaro"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "altair>=5.0.0",
+    "openai>=3.42.0",
+    "pandas>=3.1.0",
+    "pypdf>=6.21.4",
+    "python-dotenv>=1.2.4",
+    "streamlit>=1.66.1",
+]
+
+[project.scripts]
+rio-claro = "rio_claro:main"
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
