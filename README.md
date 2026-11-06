@@ -1,41 +1,66 @@
-# Río Claro — prototipo AI-901
+# Río Claro IA
 
-Aplicación Streamlit para el caso aprobado de Distribuidora Río Claro. El repositorio debe permanecer privado durante la preparación y revisión de los datos de demostración.
+Prototipo de demostración construido con Streamlit para explorar asistentes de IA y flujos operativos de Distribuidora Río Claro. No es un sistema listo para producción.
+
+## Enlaces
+
+- **Aplicación de demostración:** [Río Claro IA](https://rio-claro-aca-validation.yellowrock-2b43caa9.centralus.azurecontainerapps.io/)
+- **Repositorio:** [abeltran0954/rio-claro-ai901-demo](https://github.com/abeltran0954/rio-claro-ai901-demo) — privado; el propietario debe autorizar el acceso.
+- **Guía para evaluación:** [ENTREGABLE_EVALUADOR.md](./ENTREGABLE_EVALUADOR.md)
+
+## Funcionalidad
+
+- Acceso de demostración con selección de sucursal y empleado, y módulos visibles según el perfil asignado.
+- Asistente con Azure OpenAI para consultar el catálogo y ventas registradas, registrar solicitudes de traslado entre sucursales e incidencias de clientes.
+- Dictado por voz con Azure Speech, si está configurado y el navegador tiene permiso para usar el micrófono.
+- Flujos de captura y revisión asistidos por IA para ventas, recepción de mercancía y validación de facturas, con confirmación humana antes de registrar.
+- Bandeja de solicitudes e incidencias y vistas de datos según los módulos habilitados para el perfil.
+
+La revisión manual de los perfiles y permisos de demostración continúa. Consulta las limitaciones antes de evaluar o compartir la aplicación.
+
+## Adaptación del caso AI-901
+
+La aplicación adapta el escenario a las sucursales configuradas para esta demostración: Culiacán, Guasave, Los Mochis, Mazatlán y Navolato. El caso de referencia menciona Guadalajara, Zapopan, León, Querétaro y Aguascalientes; no se plantea una equivalencia uno a uno entre ambas listas.
 
 ## Ejecución local
 
-Requiere Python 3.12 y `uv`.
+Requiere Python 3.12 o posterior y [`uv`](https://docs.astral.sh/uv/).
 
 ```powershell
 uv sync
 uv run streamlit run app.py
 ```
 
-Configura las variables requeridas en un archivo `.env` local o en el entorno del proceso. No agregues `.env` al repositorio:
+Configura estas variables en un `.env` local o en el entorno del proceso:
 
-- `AZURE_OPENAI_ENDPOINT`
-- `AZURE_OPENAI_API_KEY`
-- `AZURE_OPENAI_DEPLOYMENT_NAME`
+| Variable | Requisito | Uso |
+|---|---|---|
+| `AZURE_OPENAI_ENDPOINT` | Requerida | Endpoint de Azure OpenAI. |
+| `AZURE_OPENAI_API_KEY` | Requerida | Clave de Azure OpenAI. |
+| `AZURE_OPENAI_DEPLOYMENT_NAME` | Requerida | Nombre del despliegue de modelo. |
+| `DEMO_LOGIN_PIN` | Requerida para iniciar sesión | PIN compartido de cuatro dígitos para la demostración. El valor se entrega por un canal autorizado, nunca en el repositorio. |
+| `AZURE_SPEECH_KEY` | Opcional | Habilita el dictado por voz. |
+| `AZURE_SPEECH_REGION` | Opcional | Región de Azure Speech; si se omite, la aplicación usa su región predeterminada. |
 
-Para habilitar el dictado por voz, configura también `AZURE_SPEECH_KEY` y, si corresponde, `AZURE_SPEECH_REGION`. `DEMO_LOGIN_PIN` es un PIN compartido únicamente para demostración; no es autenticación apta para producción.
+No agregues `.env` ni archivos de secretos a Git.
 
-## Azure Container Apps
+## Publicación y despliegue
 
-El `Dockerfile` crea una imagen Linux de Python 3.12 y contiene solo el código, el CSV de empleados y la base SQLite aprobada como datos sintéticos. `.dockerignore` excluye `.env`, archivos locales, datos auxiliares y el resto del árbol de trabajo. El flujo de GitHub Actions publica la imagen en el GitHub Container Registry privado del repositorio al actualizar `main`.
+El flujo [Publish Río Claro demo container](./.github/workflows/publish-container.yml) construye y publica imágenes en GitHub Container Registry al actualizar `main`. Genera una etiqueta inmutable con el commit (`sha-<commit>`) y la etiqueta `latest`; para crear una revisión en Azure Container Apps, prefiere la etiqueta `sha-<commit>`.
 
-Para desplegar:
+La imagen utiliza `Dockerfile` y necesita la configuración de Azure OpenAI, Azure Speech y `DEMO_LOGIN_PIN` en los secretos o variables de entorno de Container Apps. No guardes sus valores en el código ni en este documento.
 
-1. Ejecuta el flujo **Publish Río Claro demo container** en GitHub Actions y espera que finalice correctamente.
-2. En Container Apps, configura el registro privado `ghcr.io` con el usuario de GitHub y un token personal de solo lectura de paquetes (`read:packages`). No guardes ese token en el repositorio ni lo compartas por chat.
-3. Usa la imagen `ghcr.io/abeltran0954/rio-claro-ai901-demo:latest`, el puerto de destino `8000` y habilita ingress externo HTTPS.
-4. Agrega en la configuración de la app `DEMO_LOGIN_PIN=1234` y configura como secretos `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY` y `AZURE_OPENAI_DEPLOYMENT_NAME`. `AZURE_SPEECH_KEY` y `AZURE_SPEECH_REGION` son opcionales para dictado. No copies valores desde `.env` al código ni a GitHub.
-5. Mantén una sola réplica mientras se use SQLite. Sin un volumen persistente, los cambios a la base son temporales y pueden perderse cuando Azure sustituya la réplica; la base sintética incluida en la imagen sirve como estado inicial.
+## Datos y limitaciones
 
-El acceso demo con PIN compartido no es autenticación para producción. Antes de usar datos reales, se requiere diseñar autenticación individual, controles de acceso, almacenamiento persistente y protección de datos.
+- El contenedor incluye una base SQLite inicial y un archivo de empleados para la demostración. Revisa y autoriza el contenido de todos los datos antes de compartir el repositorio o la imagen.
+- La aplicación no tiene almacenamiento persistente configurado para SQLite en Azure. Los cambios guardados en la base pueden perderse al sustituir la réplica o desplegar otra revisión.
+- El PIN es compartido y de demostración; seleccionar un empleado no equivale a autenticar individualmente a esa persona. El control de perfil no debe considerarse una barrera de seguridad para datos reales.
+- Los modelos de IA pueden equivocarse al transcribir, extraer o interpretar información. Revisa los resultados antes de registrar operaciones.
+- Usa exclusivamente datos ficticios o autorizados para pruebas. No cargues facturas, datos de clientes ni información personal real.
+- El repositorio debe permanecer privado mientras contenga datos de operación o activos que no hayan sido revisados para publicación.
 
-## Plan de trabajo
+No hay una suite de pruebas automatizadas configurada. La comprobación de sintaxis de Python puede ejecutarse sin importar la aplicación ni abrir la base de datos:
 
-1. **Fase 1 — preparación local y protección del repositorio:** asegurar el arranque, separar secretos y archivos operativos, preparar la configuración para almacenamiento persistente y validar la aplicación.
-2. **Fase 2 — publicación y evaluación:** publicar únicamente los activos sintéticos aprobados, desplegar en Azure usando el crédito autorizado, verificar la URL desde una sesión externa y completar la evidencia de los criterios de éxito.
-
-No se deben subir `.env`, secretos, bases de datos, CSV ni audio sin una revisión explícita y una lista permitida de activos sintéticos de demostración.
+```powershell
+uv run --no-sync python -m py_compile app.py
+```
