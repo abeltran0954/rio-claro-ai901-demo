@@ -347,7 +347,39 @@ def get_db_connection():
         shutil.copy2(db_seed, db_path)
     return sqlite3.connect(str(db_path), check_same_thread=False)
 
+TABLAS_PERMITIDAS_CONSULTAS_MOSTRADOR = frozenset(
+    {"productos", "sqlite_master", "sqlite_schema"}
+)
+
+def autorizar_consulta_mostrador(accion, nombre_tabla, nombre_columna, base_datos, activador):
+    if (
+        accion == sqlite3.SQLITE_READ
+        and (nombre_tabla or "").casefold()
+        not in TABLAS_PERMITIDAS_CONSULTAS_MOSTRADOR
+    ):
+        return sqlite3.SQLITE_DENY
+    return sqlite3.SQLITE_OK
+
+def ejecutar_consulta_base_datos(query, rol):
+    consulta_conn = get_db_connection()
+    if rol == "Consultas Mostrador":
+        consulta_conn.set_authorizer(autorizar_consulta_mostrador)
+    try:
+        return pd.read_sql_query(query, consulta_conn)
+    except (sqlite3.DatabaseError, pd.errors.DatabaseError) as error:
+        mensaje = str(error).casefold()
+        if rol == "Consultas Mostrador" and (
+            "prohibited" in mensaje or "not authorized" in mensaje
+        ):
+            raise PermissionError(
+                "Acceso denegado: este perfil solo puede consultar el catálogo de productos."
+            ) from error
+        raise
+    finally:
+        consulta_conn.close()
+
 conn = get_db_connection()
+conn.create_function("normalizar_sucursal", 1, normalizar_sucursal, deterministic=True)
 
 # Asegurar tablas
 conn.execute('''
@@ -1114,7 +1146,11 @@ if prompt_final:
                 )
                 
                 if rol_rbac == "Consultas Mostrador":
-                    contexto_rbac += "NO puedes revelar bases de clientes ni facturas."
+                    contexto_rbac += (
+                        "NO puedes revelar bases de clientes ni facturas. Para consultas SQL "
+                        "usa únicamente la tabla 'productos'; para ventas usa "
+                        "'consultar_ventas'."
+                    )
                 elif rol_rbac in ["Administrador Global", "Finanzas y Auditoría"]:
                     contexto_rbac += "Tienes acceso total."
 
@@ -1143,8 +1179,19 @@ if prompt_final:
                                 if not query.strip().upper().startswith("SELECT"):
                                     resultado_bd = "Operación denegada. Solo lectura."
                                 else:
-                                    df_resultado = pd.read_sql_query(query, conn)
-                                    resultado_bd = df_resultado.to_json(orient="records") if not df_resultado.empty else "Sin resultados."
+                                    try:
+                                        df_resultado = ejecutar_consulta_base_datos(
+                                            query,
+                                            rol_rbac,
+                                        )
+                                    except PermissionError as error:
+                                        resultado_bd = str(error)
+                                    else:
+                                        resultado_bd = (
+                                            df_resultado.to_json(orient="records")
+                                            if not df_resultado.empty
+                                            else "Sin resultados."
+                                        )
 
                             elif tool_call.function.name == "consultar_ventas":
                                 fecha_inicio = str(argumentos.get("fecha_inicio", "")).strip()
@@ -1460,10 +1507,38 @@ st.divider()
 if rol_rbac in ["Administrador Global", "Gerencia Local"]:
     with st.expander(f"📋 Historial de Recepciones de Bodega - {usuario['Sucursal']}"):
         try:
-            query_rec = f"SELECT id, folio_factura, proveedor, sucursal, fecha_registro FROM recepciones_bodega WHERE sucursal='{usuario['Sucursal']}'" if rol_rbac == "Gerencia Local" else "SELECT * FROM recepciones_bodega"
-            st.dataframe(pd.read_sql_query(query_rec, conn), use_container_width=True)
+            if rol_rbac == "Gerencia Local":
+                sucursal_historial = normalizar_sucursal(usuario["Sucursal"])
+                if not sucursal_historial:
+                    st.error(
+                        f"No se reconoce la sucursal '{usuario['Sucursal']}' para consultar el historial."
+                    )
+                else:
+                    query_rec = """
+                        SELECT id, folio_factura, proveedor, sucursal, fecha_registro
+                        FROM recepciones_bodega
+                        WHERE normalizar_sucursal(sucursal) = ?
+                    """
+                    df_recepciones = pd.read_sql_query(
+                        query_rec,
+                        conn,
+                        params=(sucursal_historial,),
+                    )
+                    if df_recepciones.empty:
+                        st.info("Aún no hay recepciones registradas para esta sucursal.")
+                    else:
+                        st.dataframe(df_recepciones, use_container_width=True)
+            else:
+                df_recepciones = pd.read_sql_query(
+                    "SELECT * FROM recepciones_bodega",
+                    conn,
+                )
+                if df_recepciones.empty:
+                    st.info("Aún no hay recepciones registradas.")
+                else:
+                    st.dataframe(df_recepciones, use_container_width=True)
         except Exception as e:
-            st.caption("Aún no hay recepciones registradas.")
+            st.error(f"No se pudo cargar el historial de recepciones: {e}")
 
 # [CORREGIDO] CATÁLOGO DE PRODUCTOS UNIFICADO
 if rol_rbac in ["Administrador Global", "Gerencia Local", "Ventas", "Consultas Mostrador"]:

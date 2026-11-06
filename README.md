@@ -10,7 +10,7 @@ Prototipo de demostración construido con Streamlit para explorar asistentes de 
 
 ## Funcionalidad
 
-- Acceso de demostración con selección de sucursal y empleado, y módulos visibles según el perfil asignado.
+- Control de acceso por perfil (RBAC): módulos y algunas vistas se delimitan según el rol y la sucursal.
 - Asistente con Azure OpenAI para consultar el catálogo y ventas registradas, registrar solicitudes de traslado entre sucursales e incidencias de clientes.
 - Dictado por voz con Azure Speech, si está configurado y el navegador tiene permiso para usar el micrófono.
 - Flujos de captura y revisión asistidos por IA para ventas, recepción de mercancía y validación de facturas, con confirmación humana antes de registrar.
@@ -54,7 +54,9 @@ La imagen utiliza `Dockerfile` y necesita la configuración de Azure OpenAI, Azu
 
 - El contenedor incluye una base SQLite inicial y un archivo de empleados para la demostración. Revisa y autoriza el contenido de todos los datos antes de compartir el repositorio o la imagen.
 - La aplicación no tiene almacenamiento persistente configurado para SQLite en Azure. Los cambios guardados en la base pueden perderse al sustituir la réplica o desplegar otra revisión.
-- El PIN es compartido y de demostración; seleccionar un empleado no equivale a autenticar individualmente a esa persona. El control de perfil no debe considerarse una barrera de seguridad para datos reales.
+- El prototipo sí aplica RBAC a sus módulos y limita determinadas vistas por sucursal. El PIN compartido de demostración y la selección de empleado no verifican identidad individual; antes de usar datos reales se requiere autenticación individual adecuada al entorno.
+- El asistente limita las consultas SQL de “Consultas Mostrador” al catálogo de productos. Las consultas de ventas agregadas siguen un flujo separado.
+- La nómina aparece como una posible función ERP futura; el prototipo no implementa un módulo funcional de nómina.
 - Los modelos de IA pueden equivocarse al transcribir, extraer o interpretar información. Revisa los resultados antes de registrar operaciones.
 - Usa exclusivamente datos ficticios o autorizados para pruebas. No cargues facturas, datos de clientes ni información personal real.
 - El repositorio debe permanecer privado mientras contenga datos de operación o activos que no hayan sido revisados para publicación.

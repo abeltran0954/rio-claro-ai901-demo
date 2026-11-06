@@ -8,7 +8,7 @@
 - **Código fuente:** [abeltran0954/rio-claro-ai901-demo](https://github.com/abeltran0954/rio-claro-ai901-demo) — repositorio privado; el propietario debe autorizar el acceso.
 - **Instrucciones técnicas:** [README.md](./README.md)
 
-La aplicación se abre como la usaría una persona usuaria normal. Solicita el PIN compartido de demostración, que debe obtenerse del propietario por un canal autorizado; no se incluye aquí. El PIN y la selección de empleado no son autenticación individual de producción.
+La aplicación se abre como la usaría una persona usuaria normal. Sus perfiles RBAC habilitan funciones según el rol y algunas vistas se limitan a la sucursal del perfil. Solicita un PIN compartido de demostración, que debe obtenerse del propietario por un canal autorizado; no se incluye aquí. El PIN y la selección de empleado no verifican la identidad individual.
 
 ## Problema y solución
 
@@ -21,6 +21,8 @@ El caso AI-901 describe una distribuidora con datos dispersos entre sucursales, 
 - dictado por voz para enviar consultas al asistente.
 
 La solución usa Python y Streamlit, Azure OpenAI, Azure Speech opcional y SQLite. La interfaz se ejecuta en Azure Container Apps. El código utiliza el cliente de Azure OpenAI; no se afirma una integración específica con Microsoft Foundry que no haya sido verificada.
+
+Frente al problema inicial de una carpeta compartida, el prototipo incorpora RBAC para habilitar funciones según el perfil y restringir determinadas vistas por sucursal. La aplicación no implementa un módulo funcional de nómina; esa función solo se menciona como posibilidad futura para RH.
 
 ### Adaptación de sucursales
 
@@ -52,7 +54,7 @@ Esta versión contiene únicamente esa captura. Para completar la evidencia visu
 | **Laura, cuentas por pagar:** reducir la captura de unas 12 horas semanales a menos de 2, revisar solo casos dudosos y evitar pagos duplicados. | La IA extrae campos y una persona revisa cada factura antes de aprobarla. Hay validaciones de importes, recepción y folio/proveedor duplicados. | No se ha medido el tiempo ahorrado, la tasa de error ni que se eliminen todos los pagos duplicados. El flujo no demuestra que solo se revisen casos dudosos. |
 | **Mariana, gerente de sucursal León:** responder a cualquier cliente en menos de 15 minutos, sin importar de qué sucursal salió el pedido. | Se pueden registrar tickets y mostrarlos en la bandeja de la sucursal responsable. | No se ha medido un tiempo de respuesta menor a 15 minutos ni validado el objetivo para todas las sucursales del caso. |
 | **Toño, jefe de bodega:** consultar existencias por voz desde el celular y recibir una respuesta correcta. | El asistente puede consultar el catálogo y el navegador puede dictar consultas mediante Azure Speech. El usuario confirmó en pruebas previas que el dictado y la consulta de productos funcionan. | No se ha medido la precisión de inventario ni completado una prueba sistemática en distintos celulares y navegadores. |
-| **Carlos, soporte y sistemas:** accesos por persona, secretos protegidos y capacidad de apagar el sistema ante una falla. | Los secretos se configuran mediante variables de entorno y existe un interruptor administrativo para deshabilitar la IA. | El PIN es compartido y no sustituye accesos individuales. No se ha configurado Entra ID ni Key Vault. El interruptor no equivale por sí solo a un procedimiento de respuesta a incidentes probado. |
+| **Carlos, soporte y sistemas:** accesos por persona, secretos protegidos y capacidad de apagar el sistema ante una falla. | El prototipo aplica RBAC para separar funciones; los secretos se configuran mediante variables de entorno y existe un interruptor administrativo para deshabilitar la IA. | El PIN es compartido y no verifica identidad individual. No se ha configurado Entra ID ni Key Vault. El interruptor no equivale por sí solo a un procedimiento de respuesta a incidentes probado. |
 
 ## IA responsable: evidencia y brechas
 
@@ -60,7 +62,7 @@ Esta versión contiene únicamente esa captura. Para completar la evidencia visu
 |---|---|---|
 | **Equidad** | Las sucursales se normalizan y el asistente recibe el contexto de la sucursal seleccionada. | No hay una evaluación comparativa de calidad o resultados entre sucursales. La lista de esta demo es una adaptación y no replica los datos del caso base. |
 | **Confiabilidad y seguridad** | La extracción de facturas requiere revisión humana. Se validan importes, campos, recepción y folio/proveedor duplicado antes de registrar el pago. | No se ha probado sistemáticamente qué ocurre con documentos borrosos o incompletos; la IA puede extraer datos incorrectos. No se garantiza precisión automática. |
-| **Privacidad y seguridad** | Las claves de servicios se leen del entorno y no se incluyen en este documento. | La app usa un PIN compartido, sin Entra ID ni Key Vault configurados. El contenido de una factura puede enviarse a Azure OpenAI para su análisis; no se afirma que exista una reducción adicional de datos sensibles antes del envío. |
+| **Privacidad y seguridad** | RBAC habilita módulos por perfil y limita algunas vistas por sucursal. Las consultas SQL de “Consultas Mostrador” se restringen en el servidor al catálogo de productos. Las claves de servicios se leen del entorno y no se incluyen en este documento. | El PIN compartido no verifica identidad individual; Entra ID y Key Vault no están configurados. El contenido de una factura puede enviarse a Azure OpenAI para su análisis; no se afirma que exista una reducción adicional de datos sensibles antes del envío. |
 | **Inclusión** | La interfaz permite escribir o dictar una consulta mediante Azure Speech. | No se ha completado una prueba de accesibilidad ni una validación sistemática desde celulares usados por personal de bodega. |
 | **Transparencia** | La interfaz identifica que se interactúa con un asistente de IA y muestra el perfil de sesión seleccionado. | Las respuestas no incluyen una cita verificable a cada registro o documento fuente. La selección de empleado no verifica la identidad individual. |
 | **Rendición de cuentas** | Una persona revisa y confirma los datos extraídos antes de registrar una factura; el perfil administrador puede deshabilitar la IA. | No se ha demostrado una bitácora completa de aprobación atribuible a una identidad individual ni probado un procedimiento de apagado de extremo a extremo. |
@@ -75,7 +77,7 @@ Esta versión contiene únicamente esa captura. Para completar la evidencia visu
 | Datos | SQLite con datos de demostración. No hay volumen persistente configurado en Azure; los cambios pueden perderse al sustituir la réplica o desplegar otra revisión. |
 | Publicación | GitHub Actions construye imágenes y las publica en GitHub Container Registry; Azure Container Apps ejecuta la aplicación. |
 
-- El PIN compartido y los perfiles de interfaz son únicamente controles de demostración. No se deben usar para proteger datos reales ni considerarse autorización de producción.
+- El prototipo aplica RBAC en módulos y en determinadas consultas/vistas por sucursal. El PIN compartido es de demostración y no sustituye la autenticación individual requerida para un despliegue de producción.
 - Los modelos pueden equivocarse al transcribir, extraer o interpretar información. Revisa las respuestas y usa solo datos ficticios o autorizados.
 - No se afirma que todos los perfiles hayan superado pruebas de aceptación. El usuario continúa revisándolos manualmente.
 - El proyecto no tiene una suite automatizada de pruebas configurada.
