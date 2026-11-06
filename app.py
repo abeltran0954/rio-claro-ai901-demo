@@ -61,6 +61,8 @@ CHAT_COMPOSER_JS = """
 const instances = new WeakMap()
 let speechSdkPromise
 const speechSdkUrl = "https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@1.53.0/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js"
+const segmentationSilenceTimeoutMs = 3000
+const submitSilenceTimeoutMs = 3000
 
 function loadSpeechSdk(documentRef, windowRef) {
     if (windowRef.SpeechSDK) return Promise.resolve(windowRef.SpeechSDK)
@@ -161,7 +163,7 @@ export default function (component) {
             const sdk = await loadSpeechSdk(parentElement.ownerDocument, windowRef)
             const speechConfig = sdk.SpeechConfig.fromAuthorizationToken(data.token, data.region)
             speechConfig.speechRecognitionLanguage = "es-MX"
-            speechConfig.setProperty(sdk.PropertyId.Speech_SegmentationSilenceTimeoutMs, "1300")
+            speechConfig.setProperty(sdk.PropertyId.Speech_SegmentationSilenceTimeoutMs, String(segmentationSilenceTimeoutMs))
             speechConfig.setProperty(sdk.PropertyId.SpeechServiceConnection_InitialSilenceTimeoutMs, "10000")
             const audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput()
             const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig)
@@ -170,13 +172,17 @@ export default function (component) {
             state.finishing = false
             state.recognizer = recognizer
             recordButton.disabled = true
-            state.setStatus("Escuchando; se enviará automáticamente tras una pausa.")
+            state.setStatus("Escuchando; se enviará automáticamente después de unos 6 segundos sin hablar.")
+
+            recognizer.recognizing = (_, event) => {
+                if (event.result.text.trim()) clearTimeout(state.silenceTimer)
+            }
 
             recognizer.recognized = (_, event) => {
                 if (event.result.reason === sdk.ResultReason.RecognizedSpeech && event.result.text.trim()) {
                     state.segments.push(event.result.text.trim())
                     clearTimeout(state.silenceTimer)
-                    state.silenceTimer = setTimeout(() => state.finish(), 800)
+                    state.silenceTimer = setTimeout(() => state.finish(), submitSilenceTimeoutMs)
                 }
             }
             recognizer.canceled = (_, event) => {
