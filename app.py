@@ -1504,7 +1504,7 @@ if dashboard_placeholder is not None:
 st.divider()
 
 # [NUEVO] TABLA DE REFERENCIA DE RECEPCIONES
-if rol_rbac in ["Administrador Global", "Gerencia Local"]:
+if rol_rbac in ["Administrador Global", "Gerencia Local"] and usuario.get("Puesto") != "Director General":
     with st.expander(f"📋 Historial de Recepciones de Bodega - {usuario['Sucursal']}"):
         try:
             if rol_rbac == "Gerencia Local":
