@@ -5,7 +5,7 @@ Prototipo de demostración construido con Streamlit para explorar asistentes de 
 ## Enlaces
 
 - **Aplicación de demostración:** [Río Claro IA](https://rio-claro-aca-validation.yellowrock-2b43caa9.centralus.azurecontainerapps.io/)
-- **Repositorio:** [abeltran0954/rio-claro-ai901-demo](https://github.com/abeltran0954/rio-claro-ai901-demo) — privado; el propietario debe autorizar el acceso.
+- **Repositorio:** [abeltran0954/rio-claro-ai901-demo](https://github.com/abeltran0954/rio-claro-ai901-demo) — código y datos sintéticos disponibles públicamente.
 - **Guía para evaluación:** [ENTREGABLE_EVALUADOR.md](./ENTREGABLE_EVALUADOR.md)
 
 ## Funcionalidad
@@ -44,6 +44,10 @@ Configura estas variables en un `.env` local o en el entorno del proceso:
 
 No agregues `.env` ni archivos de secretos a Git.
 
+## Utilidades de datos
+
+Los scripts de la raíz permiten actualizar la base, cargar ventas, exportar productos y consolidar catálogos y clientes. `Limpiar_facturas.py` elimina los registros de facturas y recepciones; ejecútalo solo sobre una copia de la base si necesitas conservar esos datos. `unificador.py` requiere la configuración de Azure OpenAI y escribe resultados en la base.
+
 ## Publicación y despliegue
 
 El flujo [Publish Río Claro demo container](./.github/workflows/publish-container.yml) construye y publica imágenes en GitHub Container Registry al actualizar `main`. Genera una etiqueta inmutable con el commit (`sha-<commit>`) y la etiqueta `latest`; para crear una revisión en Azure Container Apps, prefiere la etiqueta `sha-<commit>`.
@@ -52,14 +56,13 @@ La imagen utiliza `Dockerfile` y necesita la configuración de Azure OpenAI, Azu
 
 ## Datos y limitaciones
 
-- El contenedor incluye una base SQLite inicial y un archivo de empleados para la demostración. Revisa y autoriza el contenido de todos los datos antes de compartir el repositorio o la imagen.
+- El contenedor incluye una base SQLite inicial y un archivo de empleados con datos sintéticos creados para la demostración. Los CSV y bases de datos de ejemplo versionados también son sintéticos.
 - La aplicación no tiene almacenamiento persistente configurado para SQLite en Azure. Los cambios guardados en la base pueden perderse al sustituir la réplica o desplegar otra revisión.
 - El prototipo sí aplica RBAC a sus módulos y limita determinadas vistas por sucursal. El PIN compartido de demostración y la selección de empleado no verifican identidad individual; antes de usar datos reales se requiere autenticación individual adecuada al entorno.
 - El asistente limita las consultas SQL de “Consultas Mostrador” al catálogo de productos. Las consultas de ventas agregadas siguen un flujo separado.
 - La nómina aparece como una posible función ERP futura; el prototipo no implementa un módulo funcional de nómina.
 - Los modelos de IA pueden equivocarse al transcribir, extraer o interpretar información. Revisa los resultados antes de registrar operaciones.
-- Usa exclusivamente datos ficticios o autorizados para pruebas. No cargues facturas, datos de clientes ni información personal real.
-- El repositorio debe permanecer privado mientras contenga datos de operación o activos que no hayan sido revisados para publicación.
+- Usa exclusivamente datos ficticios o autorizados para pruebas. No cargues facturas, datos de clientes ni información personal real en el repositorio, la imagen o la aplicación pública.
 
 No hay una suite de pruebas automatizadas configurada. La comprobación de sintaxis de Python puede ejecutarse sin importar la aplicación ni abrir la base de datos:
 

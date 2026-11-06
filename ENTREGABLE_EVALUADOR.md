@@ -5,7 +5,7 @@
 ## Acceso al prototipo
 
 - **Aplicación:** [Río Claro IA](https://rio-claro-aca-validation.yellowrock-2b43caa9.centralus.azurecontainerapps.io/)
-- **Código fuente:** [abeltran0954/rio-claro-ai901-demo](https://github.com/abeltran0954/rio-claro-ai901-demo) — repositorio privado; el propietario debe autorizar el acceso.
+- **Código fuente:** [abeltran0954/rio-claro-ai901-demo](https://github.com/abeltran0954/rio-claro-ai901-demo) — repositorio público con datos sintéticos para la demostración.
 - **Instrucciones técnicas:** [README.md](./README.md)
 
 La aplicación se abre como la usaría una persona usuaria normal. Sus perfiles RBAC habilitan funciones según el rol y algunas vistas se limitan a la sucursal del perfil. Solicita un PIN compartido de demostración, que debe obtenerse del propietario por un canal autorizado; no se incluye aquí. El PIN y la selección de empleado no verifican la identidad individual.
@@ -84,7 +84,7 @@ Esta versión contiene únicamente esa captura. Para completar la evidencia visu
 
 ## Ruta de demostración
 
-1. Solicita al propietario acceso al repositorio privado y el PIN de demostración por separado.
+1. Consulta el código en el repositorio público; solicita el PIN de demostración al propietario por un canal separado.
 2. Entra por la aplicación web y selecciona una sucursal y un perfil habilitado.
 3. Consulta un producto ficticio o autorizado y verifica el resultado contra el catálogo.
 4. Si se prueba un traslado, indica producto, cantidad y sucursal proveedora; confirma que aparezca en la bandeja de esa sucursal.

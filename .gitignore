@@ -24,3 +24,14 @@ wheels/
 *.csv
 *.wav
 reporte_unificacion_productos.md
+
+# Synthetic demo fixtures explicitly approved for public evaluation.
+!catalogo_suc_*_v3.csv
+!clientes_suc_*_v5.csv
+!empleados_distribuidora_v2.csv
+!facturas_ventas.csv
+!productos_proveedores.csv
+!productos_unificados_maestro.csv
+!facturas_ventas.db
+!rioclaro_facturas.db
+!rioclaro_master.db
