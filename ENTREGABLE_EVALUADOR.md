@@ -6,7 +6,7 @@
 
 - **Aplicación:** [Río Claro IA](https://rio-claro-aca-validation.yellowrock-2b43caa9.centralus.azurecontainerapps.io/)  
 - **Código fuente:** [abeltran0954/rio-claro-ai901-demo](https://github.com/abeltran0954/rio-claro-ai901-demo) — repositorio público con datos sintéticos para la demostración.  
-- **Información del sistema y guía:** [README.md](./README.md)
+- **Información del sistema:** [README.md](./README.md)
 
 ## Ruta de demostración
 
