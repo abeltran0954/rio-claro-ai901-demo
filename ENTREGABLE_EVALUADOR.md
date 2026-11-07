@@ -42,7 +42,7 @@ El documento del caso menciona Guadalajara, Zapopan, León, Querétaro y Aguasca
 
 La siguiente captura corresponde a la pantalla real de acceso de la aplicación. No muestra PIN, información personal ni datos operativos.
 
-![Pantalla de acceso a Río Claro IA](./docs/capturas/01-acceso.png)
+![Pantalla de acceso a Río Claro IA](./docs/capturas/Login.)
 
 Esta versión contiene únicamente esa captura. Para completar la evidencia visual de la evaluación, quedan pendientes capturas sanitizadas de una consulta al catálogo, una operación de traslado y su bandeja receptora, la revisión de una factura de prueba y una consulta por voz. Deben obtenerse después de validar los perfiles y usando datos ficticios o autorizados; no se presentan imágenes simuladas como evidencia.
 
