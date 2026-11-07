@@ -10,16 +10,16 @@
 
 ## Ruta de demostración
 
-1. Ingrese al Link de la aplicación; utilice el PIN de demostración: 1234 para ingresar a cualquier perfil.&nbsp;  
+1. Ingrese al Link de la aplicación; utilice el **PIN DE DEMOSTRACIÓN: 1234** para ingresar a cualquier perfil.&nbsp;  
 2. Entra por la aplicación web y selecciona una sucursal y un perfil habilitado.  
 3. Consulta un producto puedes preguntar naturalmente  y verifica el resultado contra el catálogo.  
 4. Si se prueba un traslado, indica producto, cantidad y sucursal proveedora; confirma que aparezca en la bandeja de esa sucursal. Estas solicitudes y mensajes llegan a  los perfiles de Gerencia y Supervisor de Logística de cada sucursal.&nbsp;  
-5. Para registro de ventas (Mazatlán/Gerente) En el panel lateral esta el boton para cargar la factura, usar el PDF adjunto en la publicación de teams: VentasMazatlan.pdf, confirma los datos y aprueba el registro.&nbsp;  
-6. Para el alta de inventario (Los Mochis/Gerente)  y que dicha factura se habilite para su registro en CxP use el PDF adjunto en el canal de teams: FacturaComprasMochis.pdf&nbsp;  
-7. Para registro de facturas en cuentas por pagar(Corporativo/Laura), utiliza únicamente un documento de prueba autorizado adjunto en la publicación de Teams: FacturaComprasMochis.pdf qué es el mismo que usó en el paso anterior en perfil de gerencia  y revisa todos los campos antes de aprobar.&nbsp;  
+5. Para registro de ventas **(Mazatlán/Gerente)** En el panel lateral esta el boton para cargar la factura, usar el PDF adjunto en la publicación de teams: **VentasMazatlan.pdf,** confirma los datos y aprueba el registro.&nbsp;  
+6. Para el alta de inventario **(Los Mochis/Gerente)**  y que dicha factura se habilite para su registro en CxP use el PDF adjunto en el canal de teams: **FacturaComprasMochis.pdf**&nbsp;  
+7. Para registro de facturas en cuentas por pagar **(Corporativo/Laura)**, utiliza únicamente un documento de prueba autorizado adjunto en la publicación de Teams: **FacturaComprasMochis.pdf** qué es el mismo que usó en el paso anterior en perfil de gerencia  y revisa todos los campos antes de aprobar.&nbsp;  
 8. Para voz, dicta una consulta completa, puedes guiarte de ejemplos de productos desplegando la tabla de productos unificados.&nbsp;  
-9. En conversación con el asistente de IA  en cualquier momento puedes crear un reporte o queja de cliente y puedes escribir al mismo tiempo datos como folios, facturas teléfono etc en la caja de texto y el agente unifica ambas entradas y genera el ticket enviándolo a la sucursal correspondiente. Ejemplo: “Se comunicó el Sr. Pedro Vargas de la ciudad de Navolato para indicar que su pedido que realizó el sábado no ha sido sido surtido aun y le urge que se lo entreguen. Los puede recibir mañana de 9 a 1 pm”&nbsp;  
-10. Valida la llegada del ticket ingresando a el buzón (Navolato/Gerente) y verás el ticket.  
+9. En conversación con el asistente de IA  en cualquier momento puedes crear un reporte o queja de cliente y puedes escribir al mismo tiempo datos como folios, facturas teléfono etc en la caja de texto y el agente unifica ambas entradas y genera el ticket enviándolo a la sucursal correspondiente. Ejemplo: **“Se comunicó el Sr. Pedro Vargas de la ciudad de Navolato para indicar que su pedido que realizó el sábado no ha sido sido surtido aun y le urge que se lo entreguen. Los puede recibir mañana de 9 a 1 pm”**&nbsp;  
+10. Valida la llegada del ticket ingresando a el buzón **(Navolato/Gerente)** y verás el ticket.  
 11. Puede proceder libremente a explorar las demás funciones y pruebas que desee realizar.
 
 &nbsp;
@@ -42,7 +42,7 @@ Frente al problema inicial de una carpeta compartida, el prototipo incorpora RBA
 
 ### Adaptación de sucursales a Sinaloa&nbsp;
 
-El documento del caso menciona Guadalajara, Zapopan, León, Querétaro y Aguascalientes. Esta instancia adapta el escenario a las sucursales configuradas en la aplicación: Culiacán, Guasave, Los Mochis, Mazatlán y Navolato. Es una adaptación del entorno de demostración; **no** se establece una correspondencia uno a uno entre las sucursales de ambas listas.
+El documento del caso menciona Guadalajara, Zapopan, León, Querétaro y Aguascalientes. Esta instancia adapta el escenario a las sucursales configuradas en la aplicación: **Culiacán, Guasave, Los Mochis, Mazatlán y Navolato.** Es una adaptación del entorno de demostración; 
 
 ## Funciones implementadas
 
@@ -61,6 +61,26 @@ La siguiente captura corresponde a la pantalla real de acceso de la aplicación.
 &nbsp;
 
 ![Pantalla de acceso a Río Claro IA](./docs/capturas/Login.png)
+
+&nbsp;
+
+![Pantalla de acceso desde móvil a Río Claro IA](./docs/capturas/LoginMov.jepg)
+
+&nbsp;
+
+![Pantalla de acceso desde móvil a Río Claro IA](./docs/capturas/LoginMov.jepg)
+
+&nbsp;
+
+![Pantalla del Director con Dashboard de Ventas y utilidad](./docs/capturas/Dash.png)
+
+&nbsp;
+
+![Pantalla registro factura CXP - Laura](./docs/capturas/cxp.png)
+
+&nbsp;
+
+![Resultado de la interacción por audio en móvil de Toño de Bodega](./docs/capturas/audio.png)
 
 &nbsp;
 
