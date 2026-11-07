@@ -120,4 +120,5 @@ El prototipo aplica RBAC en módulos y en determinadas consultas/vistas por sucu
 - Los modelos pueden equivocarse al transcribir, extraer o interpretar información. Revisa las respuestas y usa solo datos ficticios o autorizados.  
 - Se confirma que todos los perfiles superaron pruebas de funcionalidad basados en las requisiciones del proyecto.&nbsp;  
 - El proyecto no tiene una suite automatizada de pruebas configurada, ofrece en cambio un uso real para probar bajo la autenticación temporal usando el mismo PIN en todos los perfiles.&nbsp;  
-12. &nbsp;
+
+**POR TODO EL CONOCIMIENTO QUE SE NOS BRINDO EN ESTE CURSO ES QUE SE HA LOGRADO ESTE DESARROLLO - ¡GRACIAS TOTALES!** 
