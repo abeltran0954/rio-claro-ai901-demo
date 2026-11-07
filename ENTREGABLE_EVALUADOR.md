@@ -64,11 +64,11 @@ La siguiente captura corresponde a la pantalla real de acceso de la aplicación.
 
 &nbsp;
 
-![Pantalla de acceso desde móvil a Río Claro IA](./docs/capturas/LoginMov.jepg)
+![Pantalla de acceso desde móvil a Río Claro IA](./docs/capturas/LoginMov.jpeg)
 
 &nbsp;
 
-![Pantalla de acceso desde móvil a Río Claro IA](./docs/capturas/LoginMov.jepg)
+![Pantalla de acceso desde móvil a Río Claro IA](./docs/capturas/LoginMov.jpeg)
 
 &nbsp;
 
