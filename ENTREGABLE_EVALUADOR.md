@@ -60,7 +60,7 @@ La siguiente captura corresponde a la pantalla real de acceso de la aplicación.
 
 &nbsp;
 
-![Pantalla de acceso a Río Claro IA](./docs/capturas/01-acceso.png)
+![Pantalla de acceso a Río Claro IA](./docs/capturas/Login.png)
 
 &nbsp;
 
