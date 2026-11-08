@@ -64,11 +64,15 @@ La siguiente captura corresponde a la pantalla real de acceso de la aplicación.
 
 &nbsp;
 
-![Pantalla de acceso desde móvil a Río Claro IA](./docs/capturas/LoginMov.jpeg)
+La siguiente captura corresponde a la pantalla de acceso desde móvil.
 
 &nbsp;
 
 ![Pantalla de acceso desde móvil a Río Claro IA](./docs/capturas/LoginMov.jpeg)
+
+&nbsp;
+
+La siguiente captura corresponde a la pantalla del Director con Dashboard de Ventas y utilidad.
 
 &nbsp;
 
@@ -76,7 +80,15 @@ La siguiente captura corresponde a la pantalla real de acceso de la aplicación.
 
 &nbsp;
 
+La siguiente captura corresponde a la pantalla de de registro de facturas CxP - Laura.
+
+&nbsp;
+
 ![Pantalla registro factura CXP - Laura](./docs/capturas/cxp.png)
+
+&nbsp;
+
+Resultado de la interacción por audio en móvil de Toño jefe de Bodega.
 
 &nbsp;
 
