@@ -42,7 +42,7 @@ Frente al problema inicial de una carpeta compartida, el prototipo incorpora RBA
 
 ### Adaptación de sucursales a Sinaloa&nbsp;
 
-El documento del caso menciona Guadalajara, Zapopan, León, Querétaro y Aguascalientes. Esta instancia adapta el escenario a las sucursales configuradas en la aplicación: **Culiacán, Guasave, Los Mochis, Mazatlán y Navolato.** Es una adaptación del entorno de demostración; 
+El documento del caso menciona Guadalajara, Zapopan, León, Querétaro y Aguascalientes. Esta instancia adapta el escenario a las sucursales configuradas en la aplicación: **Culiacán, Guasave, Los Mochis, Mazatlán y Navolato.** Es una adaptación del entorno de demostración con la finalidad de presentarlo a distribuidora local; 
 
 ## Funciones implementadas
 
