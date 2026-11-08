@@ -80,7 +80,7 @@ La siguiente captura corresponde a la pantalla real de acceso de la aplicación.
 
 &nbsp;
 
-![Resultado de la interacción por audio en móvil de Toño de Bodega](./docs/capturas/audio.png)
+![Resultado de la interacción por audio en móvil de Toño de Bodega](./docs/capturas/audio.jpeg)
 
 &nbsp;
 
